@@ -86,9 +86,9 @@
             const resultElement = document.getElementById('result');
             resultElement.innerHTML = '';
             combinations.forEach(combination => {
-                const listItem = document.createElement('li');
-                listItem.textContent = combination.join(', ');
-                resultElement.appendChild(listItem);
+            const listItem = document.createElement('li');
+            listItem.textContent = "error";
+            resultElement.appendChild(listItem);
             });
         }
         function error() {
