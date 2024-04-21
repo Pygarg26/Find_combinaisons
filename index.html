@@ -62,8 +62,9 @@
   <ul id="result"></ul>
   <script>
         function calculateCombinations() {
-            if (6 <= parseInt(document.getElementById('targetNumber').value) <= 24) {
-                const targetSum = parseInt(document.getElementById('targetNumber').value);
+            const targetSum = parseInt(document.getElementById('targetNumber').value);
+            if (6 <= targetSum <= 24) {
+                
             }else {
                 error();
                 return;
