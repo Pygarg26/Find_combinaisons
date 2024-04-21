@@ -63,12 +63,6 @@
   <script>
         function calculateCombinations() {
             const targetSum = parseInt(document.getElementById('targetNumber').value);
-            if (targetSum >= 6 && targetSum <= 24) {
-                
-            }else {
-                error();
-                return;
-            }
             const combinations = [];
 
             // Parcourez toutes les combinaisons possibles de 3 chiffres
@@ -87,14 +81,8 @@
             const resultElement = document.getElementById('result');
             resultElement.innerHTML = '';
             combinations.forEach(combination => {
-            const listItem = document.createElement('li');
-            listItem.textContent = "error";
-            resultElement.appendChild(listItem);
-            });
-        }
-        function error() {
-            const errorItem = document.createElement('li');
-                errorItem.textContent = "error : number too high or too low";
+                const listItem = document.createElement('li');
+                listItem.textContent = combination.join(', ');
                 resultElement.appendChild(listItem);
             });
         }
