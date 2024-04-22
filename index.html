@@ -52,26 +52,33 @@
 <body>
   <h1 id="title">Combinaisons</h1>
   <h3>
-     <strong>All</strong> possibilities. <strong>One</strong> click.
+     <strong>Toutes</strong> les possibilités. <strong>Un</strong> clic.
   </h3>
   
-  <p>Enter a number :</p>
+  <p>Entrez un nombre :</p>
   <input type="number" id="targetNumber">
-  <button onclick="calculateCombinations()" id="button">Find</button>
-  <p>Result :</p>
+  <button onclick="calculateCombinations()" id="button">Trouver</button>
+  <p>Résultat :</p>
   <ul id="result"></ul>
   <script>
         function calculateCombinations() {
             const targetSum = parseInt(document.getElementById('targetNumber').value);
             const combinations = [];
 
-            // Parcourez toutes les combinaisons possibles de 3 chiffres
+            // Parcourez toutes les combinaisons possibles de 3, 4 ou 5 chiffres
             for (let i = 1; i < 10; i++) {
                 for (let j = 1; j < 10; j++) {
                     for (let k = 1; k < 10; k++) {
-                        const currentSum = i + j + k;
-                        if (currentSum === targetSum && i < j && j < k) {
-                            combinations.push([i, j, k]);
+                        for (let l = 1; l < 10; l++) {
+                            for (let m = 1; m < 10; m++) {
+                                const currentSum = i + j + k + l + m;
+                                if (currentSum === targetSum && i < j && j < k && k < l && l < m) {
+                                    const combination = [i, j, k, l, m];
+                                    const formattedCombination = combination.filter(num => num !== 0).join(', ');
+                                    combinations.push(formattedCombination);
+                                    
+                                }
+                            }
                         }
                     }
                 }
@@ -82,7 +89,7 @@
             resultElement.innerHTML = '';
             combinations.forEach(combination => {
                 const listItem = document.createElement('li');
-                listItem.textContent = combination.join(', ');
+                listItem.textContent = combination;
                 resultElement.appendChild(listItem);
             });
         }
