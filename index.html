@@ -55,43 +55,46 @@
      <strong>Toutes</strong> les possibilités. <strong>Un</strong> clic.
   </h3>
   
-  <p>Number :</p>
+  <p>Entrez un nombre :</p>
   <input type="number" id="targetNumber">
-  <button onclick="calculateCombinations()" id="button">Find</button>
-  <p>Result :</p>
+  <button onclick="calculateCombinations()" id="button">Trouver</button>
+  <p>Résultat :</p>
   <ul id="result"></ul>
   <script>
-        function calculateCombinations() {
-            const targetSum = parseInt(document.getElementById('targetNumber').value);
-            const combinations = [];
+    function calculateCombinations() {
+        const targetSum = parseInt(document.getElementById('targetNumber').value);
+        const combinations = [];
 
-            // Parcourez toutes les combinaisons possibles de 3, 4 ou 5 chiffres
-            for (let i = 1; i < 10; i++) {
-                for (let j = 1; j < 10; j++) {
-                    for (let k = 1; k < 10; k++) {
-                        for (let l = 1; l < 10; l++) {
-                            for (let m = 1; m < 10; m++) {
-                                const currentSum = i + j + k + l + m;
-                                if (currentSum === targetSum && i < j && j < k && k < l && l < m) {
-                                    combinations.push([i, j, k, l, m]);
-                                    
-                                    
+        // Parcourez toutes les combinaisons possibles de 3, 4 ou 5 chiffres
+        for (let i = 1; i < 10; i++) {
+            for (let j = 1; j < 10; j++) {
+                for (let k = 1; k < 10; k++) {
+                    for (let l = 1; l < 10; l++) {
+                        for (let m = 1; m < 10; m++) {
+                            const currentSum = i + j + k + l + m;
+                            if (currentSum === targetSum && i < j && j < k && k < l && l < m) {
+                                // Exclude combinations with zeros
+                                if (true) {
+                                    const combination = [i, j, k, l, m];
+                                    const formattedCombination = combination.filter(num => num !== 0).join(', ');
+                                    combinations.push(formattedCombination);
                                 }
                             }
                         }
                     }
                 }
             }
-
-            // Affichez les combinaisons trouvées
-            const resultElement = document.getElementById('result');
-            resultElement.innerHTML = '';
-            combinations.forEach(combination => {
-                const listItem = document.createElement('li');
-                listItem.textContent = combination;
-                resultElement.appendChild(listItem);
-            });
         }
-    </script>
+
+        // Affichez les combinaisons trouvées
+        const resultElement = document.getElementById('result');
+        resultElement.innerHTML = '';
+        combinations.forEach(combination => {
+            const listItem = document.createElement('li');
+            listItem.textContent = combination;
+            resultElement.appendChild(listItem);
+        });
+    }
+  </script>
 </body>
 </html>
