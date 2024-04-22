@@ -74,8 +74,7 @@
                                 const currentSum = i + j + k + l + m;
                                 if (currentSum === targetSum && i < j && j < k && k < l && l < m) {
                                     const combination = [i, j, k, l, m];
-                                    const formattedCombination = combination.filter(num => num !== 0).join(', ');
-                                    combinations.push(formattedCombination);
+                                    combinations.push(Combination);
                                     
                                 }
                             }
